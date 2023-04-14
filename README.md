@@ -1,16 +1,5 @@
 # Capstone Project Repository
-This project compares model outputs for a specific variable (sea surface salinity) at set locations. 
-
-The data used comes from the Earth System Grid Federation National Computer Interface node, a database of global model outputs. It can be found at https://esgf.nci.org.au/search/esgf-nci/
-
-All datasets were found using the search parameters:
-> Experiment = past1000 (model recreating 850-1850)
->
-> Variable = sos        (sea surface salinity)  
-
-All netcdf files are accessed via direct download link due to large file size. In order to load in a netcdf file using xarray, "#mode=bytes" must be added to the end of the URL. 
-
-The locations used are from the "cores.txt" file, representing ocean sediment cores from various locations globally. 
+This project compares model outputs for a specific variable (sea surface salinity) at set locations given lattitude and longitude, comparing them using summary statistics (max, min, average, standard deviation)
 
 The environment used can be found in the environment.yml file.
 * Python 		3.11.2
@@ -21,12 +10,26 @@ The environment used can be found in the environment.yml file.
 * Xarray 		2022.11.0
 * jupyter 		1.0.0
 
+## Data
+The data used comes from the Earth System Grid Federation National Computer Interface node, a database of global model outputs. It can be found at https://esgf.nci.org.au/search/esgf-nci/
+
+All datasets were found using the search parameters:
+* Experiment = past1000 (model recreating 850-1850)
+* Variable = sos        (sea surface salinity)  
+
+The code presumes that the files for the HADCM3 and CSIRO models are in the /data folder; due to their large size, they are not included in the github repository, and instead alternate codes for the direct download link are included. Again, due to the size, the number of 
+
+Due to the large number of GISS files and their smaller sizes, these are not downloaded but only are pulled via direct links. In order to load in a netcdf file using xarray, "#mode=bytes" must be added to the end of the URL. 
+
+The cores.txt file is a list of the locations used, representing ocean sediment cores from various locations globally.
+
+cores_avgsss.csv is the output of the Total Variation jupyter notebook. 
 
 ## Notebooks
 ### Summmary Statistics of netcdf
-Workbook that provides the initial exploration used for the development of the sumstat function. 
+Workbook that provides the initial exploration used for the development of the ncsumstat function. 
 
-### sumstat.py
+### ncsumstat.py
 This function automates the summary statistics. All require the inputs (lon, lat, ncfile) with longitude being from 0 to 360. 
 
 The include functions included are:
