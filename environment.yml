@@ -1,0 +1,12 @@
+name: capstone
+channels:
+  - defaults
+dependencies:
+  - numpy
+  - jupyter
+  - netcdf4
+  - matplotlib
+  - pandas
+  - cartopy
+  - xarray
+prefix: C:\Users\Rose\anaconda3\envs\capstone
