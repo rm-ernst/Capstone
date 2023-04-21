@@ -25,7 +25,7 @@ def std(lon,lat,ncfile):
 	import numpy as np
 	ds = xr.load_dataset(ncfile)
 	sss_alltime = ds.sos.sel(lon=lon, lat=lat, method='nearest')
-	z = np.average(sss_alltime.values)
+	z = np.std(sss_alltime.values)
 	return z
 
 def count(lon,lat,ncfile):
